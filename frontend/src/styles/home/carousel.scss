@@ -1,0 +1,11 @@
+/* Carousel.css */
+.carousel-container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+}
