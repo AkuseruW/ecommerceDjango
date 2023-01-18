@@ -1,17 +1,22 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Carousel from './components/Carousel_Home';
+import { Route, Routes } from 'react-router';
+import HomePages from './pages/HomePages';
+import ArticlesPages from './pages/ArticlesPages';
+
 // import './styles/index.scss'
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
-      <main>
-        <Carousel/>
-      </main>
+      <Routes>
+        <Route path='/' element={<HomePages />} />
+        <Route path='/articles' element={<ArticlesPages />} />
+      </Routes>
+      
       <Footer />
-    </div>
+    </>
   );
 }
 

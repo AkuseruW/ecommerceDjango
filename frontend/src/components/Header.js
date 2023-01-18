@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom";
 import { HiOutlineShoppingBag, HiOutlineUser, HiOutlineInformationCircle, HiOutlineMapPin, HiOutlineHeart, HiMagnifyingGlass } from "react-icons/hi2";
+import Headroom from 'react-headroom'
 
 function Header() {
     return (
@@ -32,25 +33,28 @@ function Header() {
                 </div>
             </div>
             <hr />
-
-            <nav>
-                <div className="container">
-                    <div className='nav_flex'>
-                        <div className="navigation">
-                            <ul>
-                                <li><NavLink>Home</NavLink></li>
-                                <li><NavLink>Articles</NavLink></li>
-                                <li><NavLink>Blog</NavLink></li>
-                                <li className='search_bar'><HiMagnifyingGlass className='icon' size={20}/></li>
-                            </ul>
+            <Headroom>
+                <nav>
+                    <div className="container">
+                        <div className='nav_flex'>
+                            <div></div>
+                            <div className="navigation">
+                                <ul>
+                                    <li><NavLink to="/">Home</NavLink></li>
+                                    <li><NavLink to="/articles">Articles</NavLink></li>
+                                    <li><NavLink>Blog</NavLink></li>
+                                    <li className='search_bar'><HiMagnifyingGlass className='icon' size={20}/></li>
+                                </ul>
+                            </div>
+                            <div className="nav_option">
+                                <NavLink><HiOutlineHeart className='icon'size={20} /></NavLink>
+                                <NavLink><HiOutlineShoppingBag className='icon'size={20} /></NavLink>
+                            </div>
                         </div>
-                        {/* <div className="nav_option">
-                            <NavLink><HiOutlineHeart className='icon'size={20} /></NavLink>
-                            <NavLink><HiOutlineShoppingBag className='icon'size={20} /></NavLink>
-                        </div> */}
                     </div>
-                </div>
-            </nav>
+                </nav>
+
+            </Headroom>
         </header>
     )
 }
