@@ -3,57 +3,62 @@ main{
         padding: 0 40px;
         h2{
             margin-top: 2rem;
-            // text-align: center;
-            // font-size: xx-large;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         .container_articles {
             overflow-x: scroll;
             display: flex;
-        
+            transition: all 0.5s ease-in-out;
+
             .article_content {
                 width: max-content;
                 margin-left: 9px;
                 background-color: white;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        
+
                 .card-image {
                     width: 500px;
                     height: 250px;
                     object-fit: cover;
                 }
-        
+
                 .card-content {
-                    padding: 1rem;
+                    padding: 1rem; 
                 }
-        
+
                 .card-title {
-                    font-size: 1.5rem;
-                    margin-bottom: 0.5rem;
+                    font-size: 1.4rem;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    margin-bottom: 1rem;
                 }
-        
+
                 .card-description {
                     font-size: 1rem;
                     color: gray;
                     margin-bottom: 1rem;
                 }
-        
+
                 .card-price-review {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
                 }
-        
+
                 .card-price {
                     font-size: 1.2rem;
                     font-weight: 600;
                 }
-        
+
                 .card-review {
                     display: flex;
                     align-items: center;
                     font-size: 1rem;
                     color: gray;
-        
+
                     span {
                         margin-left: 0.5rem;
                     }
@@ -64,12 +69,26 @@ main{
 }
 
 .container_articles::-webkit-scrollbar {
-    width: 12px;
-    // background-color: ;
+    height: 10px;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    width: 2px !important;
+    &-thumb {
+        height: 10px;
+        width: 2px !important;
+        border-radius: 10px;
+        transition: all 0.5s ease-in-out;
+        background-color: #a2a2a2;
+    }
 }
-
 .container_articles::-moz-scrollbar {
+    height: 10px;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
     width: 12px;
-    // background-color: #F5F5F5;
+    &-thumb {
+        border-radius: 10px;
+        transition: all 0.5s ease-in-out;
+        background-color: #a2a2a2;
+    }
 }
-

@@ -1,10 +1,12 @@
 import React from 'react'
 import Carousel from '../components/Carousel_Home';
 import '../styles/home/articles_card.scss'
+import '../styles/home/categories_section.scss'
 import articles from '../articles'
 
 
 function HomePages() {
+
     return (
         <>
             <Carousel />
@@ -30,6 +32,17 @@ function HomePages() {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+
+                <div className="container">
+                    <div className='categories'>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
                     </div>
                 </div>
             </main>
