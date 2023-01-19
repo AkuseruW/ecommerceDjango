@@ -3,17 +3,18 @@ import Carousel from '../components/Carousel_Home';
 import '../styles/home/articles_card.scss'
 import articles from '../articles'
 
+
 function HomePages() {
     return (
         <>
             <Carousel />
             <main>
-                <div className="container">
-                    <h3>Last </h3>
+                <div className="rezise_container_articles">
+                    <h2>Last Added</h2>
                     <div className="container_articles">
                         {articles.map(article => (
-                            <div className="article_content">
-                                <div key={article.id} className="card">
+                            <div key={article.id} className="article_content">
+                                <div className="card">
                                     <img src={article.image} alt="" className="card-image" />
                                     <div className="card-content">
                                         <h3 className="card-title">{article.name}</h3>

@@ -13,7 +13,7 @@ code {
 html,
 body {
     height: 100%;
-    width: 100vw;
+    max-width: 100vw;
     // overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -85,7 +85,7 @@ body {
 }
 
 nav {
-    width: 100vw;
+    // width: 100vw;
     // position: fixed;
     z-index: 100;
     background-color: white;
@@ -125,6 +125,11 @@ nav {
             }
         }
     }
+}
+
+footer{
+    background-color: rgb(38, 38, 38);
+    height: 30vh;
 }
 
 
