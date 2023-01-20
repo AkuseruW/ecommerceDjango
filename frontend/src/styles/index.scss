@@ -130,6 +130,10 @@ nav {
     }
 }
 
+main{
+    min-height: min-content;
+}
+
 footer {
     color: rgb(0, 0, 0);
     padding: 2rem;
@@ -204,10 +208,6 @@ hr {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-main {
-    height: 100vh;
 }
 
 @media (max-width: 768px) {

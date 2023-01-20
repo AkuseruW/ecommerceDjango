@@ -12,55 +12,58 @@ main{
             overflow-x: scroll;
             display: flex;
             transition: all 0.5s ease-in-out;
-
-            .article_content {
-                width: max-content;
-                margin-left: 9px;
-                background-color: white;
-
-                .card-image {
-                    width: 500px;
-                    height: 250px;
-                    object-fit: cover;
-                }
-
-                .card-content {
-                    padding: 1rem; 
-                }
-
-                .card-title {
-                    font-size: 1.4rem;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    letter-spacing: 2px;
-                    margin-bottom: 1rem;
-                }
-
-                .card-description {
-                    font-size: 1rem;
-                    color: gray;
-                    margin-bottom: 1rem;
-                }
-
-                .card-price-review {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                }
-
-                .card-price {
-                    font-size: 1.2rem;
-                    font-weight: 600;
-                }
-
-                .card-review {
-                    display: flex;
-                    align-items: center;
-                    font-size: 1rem;
-                    color: gray;
-
-                    span {
-                        margin-left: 0.5rem;
+            a{
+                text-decoration: none;
+                color: black;
+                .article_content {
+                    width: max-content;
+                    margin-left: 9px;
+                    background-color: white;
+    
+                    .card-image {
+                        width: 500px;
+                        height: 250px;
+                        object-fit: cover;
+                    }
+    
+                    .card-content {
+                        padding: 1rem; 
+                    }
+    
+                    .card-title {
+                        font-size: 1.4rem;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        margin-bottom: 1rem;
+                    }
+    
+                    .card-description {
+                        font-size: 1rem;
+                        color: gray;
+                        margin-bottom: 1rem;
+                    }
+    
+                    .card-price-review {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+    
+                    .card-price {
+                        font-size: 1.2rem;
+                        font-weight: 600;
+                    }
+    
+                    .card-review {
+                        display: flex;
+                        align-items: center;
+                        font-size: 1rem;
+                        color: gray;
+    
+                        span {
+                            margin-left: 0.5rem;
+                        }
                     }
                 }
             }

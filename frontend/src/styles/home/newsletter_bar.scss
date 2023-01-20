@@ -3,9 +3,17 @@
     div{
         display: flex;
         justify-content: center;
+        input[type="text"]{
+            width: 250px;
+        }
         input[type="submit"] {
             color: white;
             background-color: black;
+            border: 0;
+            padding: 10px;
+            margin-left: 5px;
+            width: 120px;
+            minmax
         }
     }
 }
