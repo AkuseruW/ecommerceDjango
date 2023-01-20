@@ -1,0 +1,11 @@
+.newsletter{
+    margin-top: 5rem;
+    div{
+        display: flex;
+        justify-content: center;
+        input[type="submit"] {
+            color: white;
+            background-color: black;
+        }
+    }
+}
