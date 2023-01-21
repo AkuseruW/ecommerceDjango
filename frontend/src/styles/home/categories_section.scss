@@ -23,7 +23,26 @@
                 }
 
             }
-
+        }
+    }
+    @media (max-width: 768px) {
+        ul {
+            a {
+                width: 50%;
+                img {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    @media (max-width: 480px) {
+        ul {
+            a {
+                width: 100%;
+                img {
+                    width: 100%;
+                }
+            }
         }
     }
 }

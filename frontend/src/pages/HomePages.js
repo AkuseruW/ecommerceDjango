@@ -1,42 +1,65 @@
 import React from 'react'
-import Carousel from '../components/home/Carousel_Home';
+import CarouselHeader from '../components/home/Carousel_Home';
 import { Link } from "react-router-dom";
 import '../styles/home/articles_card.scss'
 import '../styles/home/categories_section.scss'
 import '../styles/home/newsletter_bar.scss'
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import articles from '../articles'
+import { HiOutlineHeart } from "react-icons/hi2";
+
 
 
 function HomePages() {
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 3,
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+        },
+    };
 
     return (
         <>
-            <Carousel />
+            <CarouselHeader />
             <main>
                 <div className="container">
                     <div className="rezise_container_articles">
                         <h2>Last Added</h2>
                         <div className="container_articles ">
-                            {articles.map(article => (
-                                <Link to={`article/${article.slug}`} key={article.id}>
-                                    <div  className="article_content">
-                                        <div className="card">
-                                            <img src={article.image} alt="" className="card-image" />
-                                            <div className="card-content">
-                                                <h3 className="card-title">{article.name}</h3>
-                                                <p className="card-description">{article.description}</p>
-                                                <div className="card-price-review">
-                                                    <p className="card-price">{article.price} &euro;</p>
-                                                    <div className="card-review">
-                                                        <p>{article.reviews.average_rating}</p>
-                                                        <span>({article.reviews.number_of_reviews} reviews)</span>
+                            <Carousel responsive={responsive}
+                                showDots={true}>
+                                {articles.map((article) => (
+                                    <div className="article_content" key={article.id}>
+                                        {/* <HiOutlineHeart className='icon' size={20} /> */}
+                                        <HiOutlineHeart className='icon' size={20} style={{ position: 'absolute', top: '58px', right: '5px', color: 'white' }}/>
+                                        <Link to={`article/${article.slug}`}>
+                                            <div className="card">
+                                                <img src={article.image} alt="" className="card-image" />
+                                                <div className="card-content">
+                                                    <h3 className="card-title">{article.name}</h3>
+                                                    {/* <p className="card-description">{article.description}</p> */}
+                                                    <div className="card-price-review">
+                                                        <p className="card-price">{article.price} &euro;</p>
+                                                        <div className="card-review">
+                                                            <p>{article.reviews.average_rating}</p>
+                                                            <span>({article.reviews.number_of_reviews} reviews)</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
-                                </Link>
-                            ))}
+                                ))}
+                            </Carousel>
                         </div>
                     </div>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/home/carousel.scss';
 
-function Carousel() {
+function CarouselHeader() {
     const [activeIndex, setActiveIndex] = useState(0);
     const images = [
         "https://images.frandroid.com/wp-content/uploads/2020/06/sony-ps5-conference_2020-06-11_23-12-30.jpg",
@@ -26,4 +26,4 @@ function Carousel() {
     )
 }
 
-export default Carousel;
+export default CarouselHeader;
