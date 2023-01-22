@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect} from 'react'
 import CarouselHeader from '../components/home/Carousel_Home';
 import { Link } from "react-router-dom";
 import '../styles/home/articles_card.scss'
@@ -7,22 +7,17 @@ import '../styles/home/newsletter_bar.scss'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Article from '../components/home/Articles';
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { listArticles } from '../actions/articleAction';
 import '../styles/home/promo_time.scss'
 
 function HomePages() {
-    const [articles, setArticles] = useState([])
-
+    const dispatch = useDispatch()
+    const articleList = useSelector(state => state.articleList)
+    const {error, loading, articles} = articleList
     useEffect(()=>{
-
-        async function fetctArticles() {
-            const {data} = await axios.get('/api/articles/')
-            setArticles(data)
-        }
-
-        fetctArticles()
-        
-    },[])
+        dispatch(listArticles()) 
+    },[dispatch])
 
     const responsive = {
         desktop: {
@@ -47,13 +42,17 @@ function HomePages() {
                     <div className="rezise_container_articles">
                         <div className="container_articles ">
                             <h2>Last Added</h2>
-                            <Carousel responsive={responsive} showDots={true}>
-                                {articles.map((article) => (
-                                    <div className="article_content" key={article.id}>
-                                        <Article article={article}/>
-                                    </div>
-                                ))}
-                            </Carousel>
+                            { loading ? <h2>Loading ...</h2>
+                                : error ? <h3>{error}</h3>
+                                    : 
+                                    <Carousel responsive={responsive} showDots={true}>
+                                        {articles.map((article) => (
+                                            <div className="article_content" key={article._id}>
+                                                <Article article={article}/>
+                                            </div>
+                                        ))}
+                                    </Carousel>
+                            }
                         </div>
                     </div>
 

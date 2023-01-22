@@ -73,7 +73,6 @@ function ArticlePages({ match }) {
     async function fetctArticle() {
       const { data } = await axios.get(`/api/article/${slug}`)
       setArticle(data)
-      console.log(data)
     }
 
     fetctArticle()
@@ -92,7 +91,7 @@ function ArticlePages({ match }) {
             <div className='article-detail'>
               <h2>{article.name}</h2>
               <hr />
-              {/* <span>{article.reviews.average_rating}</span> */}
+              <span>{article.rating}</span>
               <hr />
               <p>Price : {article.price} €</p>
               <hr />
@@ -100,7 +99,7 @@ function ArticlePages({ match }) {
             </div>
             <div className='article-status'>
               <p>price: <span>{article.price} €</span></p>
-              <p>Staus: <span>In Stock</span></p>
+              <p>Status: <span>In Stock</span></p>
               <button>ADD TO CART </button>
             </div>
           </div>

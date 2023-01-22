@@ -1,35 +1,42 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .articles import articles
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+from .articles import articles
+from .models import Article
+from django.shortcuts import get_object_or_404
+from .serializers import ArticleSerializer
 
 # Create your views here.
 
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        '/api/articles/',
-        '/api/articles/create/',
+        '/api/article/',
+        '/api/article/create/',
 
-        '/api/articles/uploads/',
+        '/api/article/uploads/',
 
-        '/api/articles/<slug>/reviews/',
+        '/api/article/<slug>/reviews/',
 
         '/api/articles/top/',
-        '/api/articles/<slug>/',
+        '/api/article/<slug>/',
 
-        '/api/articles/delete/<slug>/',
-        '/api/articles/<update>/<slug>/'
+        '/api/article/delete/<slug>/',
+        '/api/article/<update>/<slug>/'
     ]
     return Response(routes)
 
 @api_view(['GET'])
 def getArticles(request):
-    return Response(articles)
+    articles = Article.objects.all()
+    serializer = ArticleSerializer(articles, many=True)
+    return Response(serializer.data)
 
 @api_view(['GET'])
-def getArticle(request, slug):
-    article = next((i for i in articles if i['slug'] == slug), None)
-    return Response(article)
+def getArticle(self, slug=None):
+    # articles = Article.objects.all()
+    # article = get_object_or_404(articles, slug=slug)
+    article = Article.objects.get(slug=slug)
+    serializer = ArticleSerializer(article, many=False)
+    return Response(serializer.data)
