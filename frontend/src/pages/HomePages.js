@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import CarouselHeader from '../components/home/Carousel_Home';
 import { Link } from "react-router-dom";
 import '../styles/home/articles_card.scss'
@@ -6,12 +6,24 @@ import '../styles/home/categories_section.scss'
 import '../styles/home/newsletter_bar.scss'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import articles from '../articles'
 import Article from '../components/home/Articles';
+import axios from 'axios'
 import '../styles/home/promo_time.scss'
-// import { HiOutlineHeart } from "react-icons/hi2";
 
 function HomePages() {
+    const [articles, setArticles] = useState([])
+
+    useEffect(()=>{
+
+        async function fetctArticles() {
+            const {data} = await axios.get('/api/articles/')
+            setArticles(data)
+        }
+
+        fetctArticles()
+        
+    },[])
+
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
