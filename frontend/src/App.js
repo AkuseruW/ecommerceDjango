@@ -2,7 +2,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import { Route, Routes } from 'react-router';
 import HomePages from './pages/HomePages';
-import ArticlesPages from './pages/ArticlesPages';
+import ArticlePages from './pages/ArticlePages';
 
 // import './styles/index.scss'
 
@@ -11,8 +11,10 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path='/' element={<HomePages />} />
-        <Route path='/articles' element={<ArticlesPages />} />
+        <Route path='/' element={<HomePages />} exact />
+        {/* <Route path='/articles' element={<ArticlesListPages />} /> */}
+        <Route path='/article/:slug' element={<ArticlePages />} />
+
       </Routes>
       
       <Footer />

@@ -7,9 +7,9 @@ import '../styles/home/newsletter_bar.scss'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import articles from '../articles'
-import { HiOutlineHeart } from "react-icons/hi2";
-
-
+import Article from '../components/home/Articles';
+import '../styles/home/promo_time.scss'
+// import { HiOutlineHeart } from "react-icons/hi2";
 
 function HomePages() {
     const responsive = {
@@ -33,37 +33,23 @@ function HomePages() {
             <main>
                 <div className="container">
                     <div className="rezise_container_articles">
-                        <h2>Last Added</h2>
                         <div className="container_articles ">
-                            <Carousel responsive={responsive}
-                                showDots={true}>
+                            <h2>Last Added</h2>
+                            <Carousel responsive={responsive} showDots={true}>
                                 {articles.map((article) => (
                                     <div className="article_content" key={article.id}>
-                                        {/* <HiOutlineHeart className='icon' size={20} /> */}
-                                        <HiOutlineHeart className='icon' size={20} style={{ position: 'absolute', top: '58px', right: '5px', color: 'white' }}/>
-                                        <Link to={`article/${article.slug}`}>
-                                            <div className="card">
-                                                <img src={article.image} alt="" className="card-image" />
-                                                <div className="card-content">
-                                                    <h3 className="card-title">{article.name}</h3>
-                                                    {/* <p className="card-description">{article.description}</p> */}
-                                                    <div className="card-price-review">
-                                                        <p className="card-price">{article.price} &euro;</p>
-                                                        <div className="card-review">
-                                                            <p>{article.reviews.average_rating}</p>
-                                                            <span>({article.reviews.number_of_reviews} reviews)</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Link>
+                                        <Article article={article}/>
                                     </div>
                                 ))}
                             </Carousel>
                         </div>
                     </div>
 
-
+                    <div className="promo-time">
+                        <div>
+                            <h3>Big winter promotion </h3>
+                        </div>
+                    </div>
 
                     <div className='categories'>
                         <ul>
