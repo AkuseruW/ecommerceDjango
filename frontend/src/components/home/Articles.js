@@ -1,7 +1,7 @@
 import React from 'react'
-// import articles from '../../articles'
 import { Link } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi2";
+import '../../styles/home/articles_card.scss'
 
 
 function Article({ article }) {

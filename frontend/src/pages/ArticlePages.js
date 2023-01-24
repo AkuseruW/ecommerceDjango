@@ -16,6 +16,7 @@ function ArticlePages() {
     dispatch(listArticleDetails(slug))
   }, [dispatch, slug])
   console.log(article);
+
   return (
     <>
       <main>
@@ -34,7 +35,7 @@ function ArticlePages() {
                   <hr />
                   <p>Price : {article.price} €</p>
                   <hr />
-                  <p>{article.description}</p>
+                  {/* <p>{article.description}</p> */}
                 </div>
                 <div className='article-status'>
                   <p>price: <span>{article.price} €</span></p>

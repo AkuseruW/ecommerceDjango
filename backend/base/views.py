@@ -12,7 +12,7 @@ from .serializers import ArticleSerializer
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
-        '/api/article/',
+        '/api/articles/',
         '/api/article/create/',
 
         '/api/article/uploads/',
