@@ -48,7 +48,7 @@ function Header() {
                             </div>
                             <div className="nav_option">
                                 <NavLink><HiOutlineHeart className='icon'size={20} /></NavLink>
-                                <NavLink><HiOutlineShoppingBag className='icon'size={20} /></NavLink>
+                                <NavLink to="/cart"><HiOutlineShoppingBag className='icon'size={20} /></NavLink>
                             </div>
                         </div>
                     </div>

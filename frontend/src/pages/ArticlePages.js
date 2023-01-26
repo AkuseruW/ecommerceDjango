@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { listArticleDetails } from '../actions/articleAction'
+import { addToCart } from '../actions/cartActions';
 import Rating from '../components/Rating'
 import '../styles/article/article_page.scss'
 
@@ -13,6 +14,13 @@ function ArticlePages() {
 
   const articleDetails = useSelector(state => state.articleDetails)
   const { error, loading, article } = articleDetails
+
+
+  const addToCartHandler = () => {
+    if (slug) {
+      dispatch(addToCart(slug, qty))
+    }
+  }
 
   useEffect(() => {
     dispatch(listArticleDetails(slug))
@@ -54,7 +62,7 @@ function ArticlePages() {
                     </div>
                   </div>
                 )}
-                <button disabled={article.countInStock === 0} type='button'>ADD TO CART </button>
+                <button onClick={addToCartHandler} disabled={article.countInStock === 0} type='button'>ADD TO CART </button>
               </div>
             </div>
           </div>
