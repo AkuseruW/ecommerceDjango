@@ -30,10 +30,10 @@ export const loadCart = (cartItems) => {
   return { type: LOAD_CART_ITEM, payload: cartItems }
 }
 
-export const removeFromCart = (id) => (dispatch, getState) => {
+export const removeFromCart = (slug) => (dispatch, getState) => {
   dispatch({
     type: CART_REMOVE_ITEM,
-    payload: id,
+    payload: slug,
   })
 
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))

@@ -1,59 +1,66 @@
-.cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .cart-items {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    width: 80%;
-    margin: 0 auto;
-}
+    display: grid;
+    grid-auto-flow: column;
 
-.left-side {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
+    .left-side {
+        .table-head {
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px black solid;
 
-.table-head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border-bottom: 1px solid black;
-}
+            span {
+                width: 86px;
+            }
+        }
 
-.table-head h4 {
-    width: 33.33%;
-    text-align: center;
-}
+        .cart-item {
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 86px 1fr;
+            grid-gap: 15px;
+            width: 100%;
+            margin-top: 15px;
+            border-bottom: 1px black solid;
 
-.cart-item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    border-bottom: 1px solid black;
-}
+            .article-image {
+                width: 86px;
 
-.cart-item div {
-    width: 33.33%;
-}
+                img {
+                    width: 100%;
+                    height: auto;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                }
+            }
 
-.cart-item img {
-    width: 100%;
-}
+            .aticle-content {
+                width: 100%;
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-columns: 1fr 1fr 1fr;
 
-.cart-item h4 {
-    text-align: center;
-}
+                div {
+                    text-align: center;
+                }
+            }
+        }
 
+    }
+    .right-slide{
+        overflow: hidden;
+        border: 1px solid black;
+        width: 80%;
+        margin-left: 20%;
+        hr{
+        width: 80%;
+        }
+        button{
+            width: 80%;
+            height: 30px;
+            background-color: black;
+            color: white;
+        }
+    }
+}
