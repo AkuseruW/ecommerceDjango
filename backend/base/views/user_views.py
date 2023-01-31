@@ -44,6 +44,11 @@ def registerUser(request):
         serializer = UserSerializerWithToken(user, many=False)
 
         # Envoyer un e-mail de confirmation
+        subject = "Bienvenue chez Logo"
+        message = "Merci de vous être inscrit chez nous ! Nous espérons que vous apprécierez votre expérience."
+        from_email = "no-reply@logo.com"
+        recipient_list = [user.email]
+        send_mail(subject, message, from_email, recipient_list)
 
         return Response(serializer.data)
     except:

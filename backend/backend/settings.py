@@ -192,3 +192,12 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = 'static/images'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '1036b53cdccec8'
+EMAIL_HOST_PASSWORD = 'd5e8999ccbc28f'
+EMAIL_PORT = 2525
+EMAIL_USE_TLS = True
