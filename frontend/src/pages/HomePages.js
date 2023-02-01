@@ -49,7 +49,7 @@ function HomePages() {
                             ) : (
                                 <Carousel responsive={responsive} showDots={true}>
                                     {articles.map((article) => (
-                                        <div className="article_content" key={article._id}>
+                                        <div className="article_content" key={article.id}>
                                             <Article article={article} />
                                         </div>
                                     ))}

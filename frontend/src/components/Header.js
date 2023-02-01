@@ -25,7 +25,7 @@ function Header() {
                                 <ul>
                                     <li><Link to="#"><HiOutlineMapPin className='icon' size={20} />Contact</Link></li>
                                     <li><Link to="#"><HiOutlineInformationCircle className='icon' size={20} />Help</Link></li>
-                                    <li><Link to="#"><HiOutlineUser className='icon' size={20} /> Sign In / Register</Link></li>
+                                    <li><Link to="/login"><HiOutlineUser className='icon' size={20} /> Sign In / Register</Link></li>
                                 </ul>
                             </div>
                         </div>

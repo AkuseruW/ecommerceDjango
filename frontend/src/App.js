@@ -4,6 +4,7 @@ import { Routes } from 'react-router';
 import HomePages from './pages/HomePages';
 import ArticlePages from './pages/ArticlePages';
 import CartPages from './pages/CartPages';
+import LoginPages from './/pages/authentication/LoginPages';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
@@ -28,6 +29,8 @@ function App() {
         {/* <Route path='/articles' element={<ArticlesListPages />} /> */}
         <Route path='/article/:slug' element={<ArticlePages />} />
         <Route path='/cart' element={<CartPages />} />
+        <Route path='/login' element={<LoginPages />} />
+
 
 
       </Routes>

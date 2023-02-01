@@ -59,13 +59,17 @@
         margin-bottom: 10px;
     }
 
-    button {
+    .add_to_cart {
         background-color: #000000;
         color: white;
         padding: 12px 20px;
         border: none;
         cursor: pointer;
         width: 100%;
+    }
+
+    .add_to_cart.Mui-disabled {
+        background-color: rgb(63, 63, 63);
     }
 }
 
