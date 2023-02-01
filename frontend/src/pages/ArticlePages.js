@@ -6,6 +6,7 @@ import { addToCart } from '../actions/cartActions';
 import Rating from '../components/Rating'
 import '../styles/article/article_page.scss'
 
+
 function ArticlePages() {
 
   const [qty, setQty] = useState(1)
@@ -28,6 +29,11 @@ function ArticlePages() {
 
   return (
     <main>
+
+        <div className="flex items-center justify-center h-screen">
+          <p className="text-gray-800 text-xl">Hello World!</p>
+        </div>
+      
       {loading ? <h2>Loading ...</h2>
         : error ? <h3>{error}</h3>
           :

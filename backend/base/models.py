@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-from django.urls import reverse
+from django_resized import ResizedImageField
 
 class Article(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    image = ResizedImageField(null=True, blank=True, size=[500, 300], crop=['middle', 'center'], force_format='PNG')
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -24,10 +24,7 @@ class Article(models.Model):
         if not self.slug:
             self.slug = slugify(self.brand +'-'+ self.name)  
         super().save(*args, **kwargs)
-        
-    # def get_absolute_url(self):
-    #     return reverse("article", kwargs={"slug": self.slug})
-        
+
         
 class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
