@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
-from django_resized import ResizedImageField
+from PIL import Image
+
 
 class Article(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200, null=True, blank=True)
-    image = ResizedImageField(null=True, blank=True, size=[500, 300], crop=['middle', 'center'], force_format='PNG')
+    image = models.ImageField(null=True, blank=True)
     brand = models.CharField(max_length=200, null=True, blank=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -16,16 +17,28 @@ class Article(models.Model):
     countInStock = models.IntegerField(null=True, blank=True, default=0)
     createdAt = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(unique=True, blank=True)
-    
-    def __str__(self):
-        return self.brand +' '+ self.name
-    
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.brand +'-'+ self.name)  
-        super().save(*args, **kwargs)
 
-        
+    def __str__(self):
+        return self.brand + ' ' + self.name
+
+    def save(self, new_width=None, new_height=None, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.brand + '-' + self.name)
+        super().save(*args, **kwargs)
+        if self.image and new_width and new_height:
+            self.resize_image(self.image.path, new_width, new_height)
+
+    @staticmethod
+    def resize_image(image_path, new_width, new_height):
+        image = Image.open(image_path)
+        (original_width, original_height) = image.size
+        aspect_ratio = original_height / float(original_width)
+        new_height = int(aspect_ratio * new_width)
+
+        resized_image = image.resize((new_width, new_height), Image.ANTIALIAS)
+        resized_image.save(image_path)
+
+
 class Review(models.Model):
     article = models.ForeignKey(Article, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
