@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../actions/userActions'
-// import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+
+
 import '../../styles/authentication/login.scss'
 
-function LoginPages({ location, history }) {
+function LoginPages({ location }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+
 
   const dispatch = useDispatch()
   console.log(location);
@@ -16,14 +20,13 @@ function LoginPages({ location, history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect)
+      navigate(redirect)
     }
-  }, [history, userInfo, redirect])
+  }, [navigate, userInfo, redirect])
 
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(login(email, password))
-
   };
 
   return (

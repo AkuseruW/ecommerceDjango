@@ -3,7 +3,7 @@ import Footer from './components/Footer'
 import { Routes } from 'react-router';
 import HomePages from './pages/HomePages';
 import ArticlePages from './pages/ArticlePages';
-import ArticlesListPages from './pages/ArticlesListPages';
+// import ArticlesListPages from './pages/ArticlesListPages';
 import CartPages from './pages/CartPages';
 import LoginPages from './/pages/authentication/LoginPages';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
