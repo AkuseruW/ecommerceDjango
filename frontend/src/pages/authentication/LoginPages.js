@@ -9,15 +9,13 @@ import '../../styles/authentication/login.scss'
 function LoginPages({ location }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigate = useNavigate();
-
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log(location);
+
   const redirect = location ? location.search ? location.search.split('=')[1] : '/' : '/'
   const userLogin = useSelector(state => state.userLogin)
   const { userInfo } = userLogin
-
+  
   useEffect(() => {
     if (userInfo) {
       navigate(redirect)
