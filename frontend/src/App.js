@@ -10,22 +10,18 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { loadCart } from './actions/cartActions';
-import { loadUser } from './actions/userActions'
+import { loadAuthUser } from './actions/userActions'
 
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const cartItems = localStorage.getItem('cartItems')
-    const userInfo = localStorage.getItem('userInfo');
+    const cartItems = localStorage.getItem('cartItems');
+    dispatch(loadCart(JSON.parse(cartItems) || []));
 
-    if (cartItems) {
-      dispatch(loadCart(JSON.parse(cartItems)))
-    }
-    if (userInfo) {
-      dispatch(loadUser(JSON.parse(userInfo)));
-    }
+    const authUserInfo = localStorage.getItem('userInfo') || {};
+    dispatch(loadAuthUser(JSON.parse(authUserInfo) || []));
   }, [dispatch])
 
   return (

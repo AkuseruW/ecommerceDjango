@@ -4,7 +4,7 @@ import {
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
 
-    USER_LOAD_IF_EXIST,
+    LOAD_USER_IF_EXIST,
 } from "../constants/userConstants";
 
 export const login = (email, password) => async (dispatch) => {
@@ -42,6 +42,6 @@ export const login = (email, password) => async (dispatch) => {
     }
 }
 
-export const loadUser = (userInfo) => {
-    return { type: USER_LOAD_IF_EXIST, payload: userInfo }
+export const loadAuthUser = (authUserInfo) => {
+    return { type: LOAD_USER_IF_EXIST, payload: authUserInfo }
 }
