@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom";
-import { HiOutlineShoppingBag, HiOutlineUser, HiOutlineInformationCircle, HiOutlineMapPin, HiOutlineHeart, HiMagnifyingGlass } from "react-icons/hi2";
+import { HiOutlineShoppingBag, HiOutlineInformationCircle, HiOutlineUser, HiOutlineMapPin, HiOutlineHeart, HiMagnifyingGlass } from "react-icons/hi2";
 import Headroom from 'react-headroom'
+import Dropdown from './Dropdown'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 function Header() {
+    const authUserInfo = useSelector(state => state.userLogin.authUserInfo);
+
     return (
         <header>
             <div className="container">
@@ -25,7 +30,15 @@ function Header() {
                                 <ul>
                                     <li><Link to="#"><HiOutlineMapPin className='icon' size={20} />Contact</Link></li>
                                     <li><Link to="#"><HiOutlineInformationCircle className='icon' size={20} />Help</Link></li>
-                                    <li><Link to="/login"><HiOutlineUser className='icon' size={20} /> Sign In / Register</Link></li>
+                                    
+                                    <li>
+                                        {authUserInfo ? (
+                                            <Dropdown authUserInfo={authUserInfo} />
+                                        ) : (
+                                            <Link to="/login"><HiOutlineUser className='icon' size={20} /> Sign In / Register</Link>
+                                        )}
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -43,12 +56,12 @@ function Header() {
                                     <li><NavLink to="/">Home</NavLink></li>
                                     <li><NavLink to="/articles">Articles</NavLink></li>
                                     <li><NavLink>Blog</NavLink></li>
-                                    <li className='search_bar'><HiMagnifyingGlass className='icon' size={20}/></li>
+                                    <li className='search_bar'><HiMagnifyingGlass className='icon' size={20} /></li>
                                 </ul>
                             </div>
                             <div className="nav_option">
-                                <NavLink><HiOutlineHeart className='icon'size={20} /></NavLink>
-                                <NavLink to="/cart"><HiOutlineShoppingBag className='icon'size={20} /></NavLink>
+                                <NavLink><HiOutlineHeart className='icon' size={20} /></NavLink>
+                                <NavLink to="/cart"><HiOutlineShoppingBag className='icon' size={20} /></NavLink>
                             </div>
                         </div>
                     </div>

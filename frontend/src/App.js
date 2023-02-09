@@ -17,11 +17,11 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const cartItems = localStorage.getItem('cartItems');
-    dispatch(loadCart(JSON.parse(cartItems) || []));
+    const cartItems = localStorage.getItem('cartItems')
+    dispatch(loadCart(JSON.parse(cartItems) || []))
 
-    const authUserInfo = localStorage.getItem('userInfo') || {};
-    dispatch(loadAuthUser(JSON.parse(authUserInfo) || []));
+    const authUserInfo = localStorage.getItem('userInfo')
+    dispatch(loadAuthUser(JSON.parse(authUserInfo) || []))
   }, [dispatch])
 
   return (

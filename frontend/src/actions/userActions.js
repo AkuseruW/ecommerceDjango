@@ -4,6 +4,9 @@ import {
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
 
+    USER_LOGOUT,
+    USER_DETAILS_RESET,
+
     LOAD_USER_IF_EXIST,
 } from "../constants/userConstants";
 
@@ -44,4 +47,12 @@ export const login = (email, password) => async (dispatch) => {
 
 export const loadAuthUser = (authUserInfo) => {
     return { type: LOAD_USER_IF_EXIST, payload: authUserInfo }
+}
+
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('userInfo')
+    dispatch({ type: USER_LOGOUT })
+    dispatch({ type: USER_DETAILS_RESET })
+    dispatch({ type: ORDER_LIST_MY_RESET })
+    dispatch({ type: USER_LIST_RESET })
 }
