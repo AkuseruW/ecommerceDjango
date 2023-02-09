@@ -1,10 +1,10 @@
 import { Fragment } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { HiOutlineUser } from "react-icons/hi2"
 import { Link } from 'react-router-dom'
-// import {}
+import { logout } from '../actions/userActions'
 
 
 function classNames(...classes) {
@@ -14,9 +14,9 @@ function classNames(...classes) {
 export default function Dropdown(props) {
   const dispatch = useDispatch()
 
-    const logoutHandler = () => {
-        dispatch(logout())
-    }
+  const logoutHandler = () => {
+    dispatch(logout())
+  }
 
   console.log(props.authUserInfo.name)
   return (
@@ -56,8 +56,10 @@ export default function Dropdown(props) {
           </div>
 
           <div className="py-1">
-            <Menu.Item onClick={logoutHandler}>
-              Logout
+            <Menu.Item>
+              <Link onClick={logoutHandler}>
+                Logout
+              </Link>
             </Menu.Item>
           </div>
 

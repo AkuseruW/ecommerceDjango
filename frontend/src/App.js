@@ -6,6 +6,8 @@ import ArticlePages from './pages/ArticlePages';
 // import ArticlesListPages from './pages/ArticlesListPages';
 import CartPages from './pages/CartPages';
 import LoginPages from './pages/authentication/LoginPages';
+import RegistrationPages from './pages/authentication/RegistrationPages';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
@@ -18,10 +20,10 @@ function App() {
 
   useEffect(() => {
     const cartItems = localStorage.getItem('cartItems')
-    dispatch(loadCart(JSON.parse(cartItems) || []))
+    dispatch(loadCart(JSON.parse(cartItems) || null))
 
     const authUserInfo = localStorage.getItem('userInfo')
-    dispatch(loadAuthUser(JSON.parse(authUserInfo) || []))
+    dispatch(loadAuthUser(JSON.parse(authUserInfo) || null))
   }, [dispatch])
 
   return (
@@ -34,6 +36,8 @@ function App() {
         <Route path='/article/:slug' element={<ArticlePages />} />
         <Route path='/cart' element={<CartPages />} />
         <Route path='/login' element={<LoginPages />} />
+        <Route path='/register' element={<RegistrationPages />} />
+
       </Routes>
 
       <Footer />

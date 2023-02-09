@@ -3,11 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import { HiOutlineShoppingBag, HiOutlineInformationCircle, HiOutlineUser, HiOutlineMapPin, HiOutlineHeart, HiMagnifyingGlass } from "react-icons/hi2";
 import Headroom from 'react-headroom'
 import Dropdown from './Dropdown'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 function Header() {
-    const authUserInfo = useSelector(state => state.userLogin.authUserInfo);
+    const authUserInfo = useSelector(state => state.userLogin.userInfo);
 
     return (
         <header>
