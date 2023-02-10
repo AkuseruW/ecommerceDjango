@@ -8,6 +8,9 @@ import { useSelector } from 'react-redux'
 
 function Header() {
     const authUserInfo = useSelector(state => state.userLogin.userInfo);
+    const cart = useSelector(state => state.cart)
+    const { cartItems } = cart
+    const itemCount = cartItems.length
 
     return (
         <header>
@@ -28,9 +31,9 @@ function Header() {
                             <span className="divider"></span>
                             <div className='list_user'>
                                 <ul>
-                                    <li><Link to="#"><HiOutlineMapPin className='icon' size={20} />Contact</Link></li>
+                                    <li><Link to="/contact"><HiOutlineMapPin className='icon' size={20} />Contact</Link></li>
                                     <li><Link to="#"><HiOutlineInformationCircle className='icon' size={20} />Help</Link></li>
-                                    
+
                                     <li>
                                         {authUserInfo ? (
                                             <Dropdown authUserInfo={authUserInfo} />
@@ -61,7 +64,7 @@ function Header() {
                             </div>
                             <div className="nav_option">
                                 <NavLink><HiOutlineHeart className='icon' size={20} /></NavLink>
-                                <NavLink to="/cart"><HiOutlineShoppingBag className='icon' size={20} /></NavLink>
+                                <NavLink to="/cart"><HiOutlineShoppingBag className='icon' size={20} />{itemCount}</NavLink>
                             </div>
                         </div>
                     </div>

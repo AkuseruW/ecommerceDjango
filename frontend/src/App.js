@@ -20,7 +20,9 @@ function App() {
 
   useEffect(() => {
     const cartItems = localStorage.getItem('cartItems')
-    dispatch(loadCart(JSON.parse(cartItems) || null))
+    if (cartItems) {
+      dispatch(loadCart(JSON.parse(cartItems)))
+    }
 
     const authUserInfo = localStorage.getItem('userInfo')
     dispatch(loadAuthUser(JSON.parse(authUserInfo) || null))

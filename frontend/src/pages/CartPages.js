@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HiOutlineXMark } from "react-icons/hi2";
 import '../styles/cart/cart_page.scss'
 import { addToCart, removeFromCart } from '../actions/cartActions';
 
-function CartPages({ history }) {
+function CartPages() {
     const cartItems = useSelector(state => state.cart.cartItems)
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const removeFromCartHandler = (slug) => {
@@ -16,7 +17,7 @@ function CartPages({ history }) {
     const total = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)
 
     const checkoutHandler = () =>{
-        history.push('/login?redirect=shipping')
+        navigate('/login?redirect=shipping')
     }
 
     return (

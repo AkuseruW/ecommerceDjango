@@ -6,7 +6,6 @@ import { HiOutlineUser } from "react-icons/hi2"
 import { Link } from 'react-router-dom'
 import { logout } from '../actions/userActions'
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -18,7 +17,6 @@ export default function Dropdown(props) {
     dispatch(logout())
   }
 
-  console.log(props.authUserInfo.name)
   return (
     <Menu as="div" className="">
       <div>
@@ -46,7 +44,7 @@ export default function Dropdown(props) {
           <div className="">
             <Menu.Item>
               {({ active }) => (
-                <Link
+                <Link to='/profile'
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
@@ -57,7 +55,11 @@ export default function Dropdown(props) {
 
           <div className="py-1">
             <Menu.Item>
-              <Link onClick={logoutHandler}>
+              <Link onClick={logoutHandler}
+                className={classNames(
+                  'text-gray-700',
+                  'block px-4 py-2 text-sm'
+                )}>
                 Logout
               </Link>
             </Menu.Item>
