@@ -1,30 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../actions/userActions'
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../actions/userActions';
 
+import '../../styles/authentication/login.scss';
 
-import '../../styles/authentication/login.scss'
+const LoginPages = ({ location }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-function LoginPages({ location }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const redirect = location?.search ? location.search.split('=')[1] : '/';
+  const userLogin = useSelector(state => state.userLogin);
+  const { userInfo } = userLogin;
 
-  const redirect = location ? location.search ? location.search.split('=')[1] : '/' : '/'
-  const userLogin = useSelector(state => state.userLogin)
-  const { userInfo } = userLogin
-  
-  useEffect(() => {
+  React.useEffect(() => {
     if (userInfo) {
-      navigate(redirect)
+      navigate(redirect);
     }
-  }, [navigate, userInfo, redirect])
+  }, [navigate, userInfo, redirect]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    dispatch(login(email, password))
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(login(email, password));
   };
 
   return (
@@ -38,7 +37,7 @@ function LoginPages({ location }) {
             id="email"
             name="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             required
           />
         </div>
@@ -49,16 +48,19 @@ function LoginPages({ location }) {
             id="password"
             name="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             required
           />
         </div>
         <button type="submit" className="login-page__submit-button">
           Login
         </button>
+        <p className="login-page__text">
+          Do not have an account yet ? <Link to='/register' className='underline '>register here</Link> 
+        </p>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPages
+export default LoginPages;
