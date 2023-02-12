@@ -1,12 +1,13 @@
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { Routes } from 'react-router';
+
 import HomePages from './pages/HomePages';
-import ArticlePages from './pages/ArticlePages';
+import ArticleDetailScreen from './pages/articles/ArticleDetail';
 // import ArticlesListPages from './pages/ArticlesListPages';
-import CartPages from './pages/CartPages';
-import LoginPages from './pages/authentication/LoginPages';
-import RegistrationPages from './pages/authentication/RegistrationPages';
+import CartScreen from './pages/cart/Cart';
+import LoginScreen from './pages/authentication/Login';
+import RegistrationScreen from './pages/authentication/Registration';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import React, { useEffect } from 'react'
@@ -35,11 +36,12 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePages />} exact />
         {/* <Route path='/articles' element={<ArticlesListPages />} /> */}
-        <Route path='/article/:slug' element={<ArticlePages />} />
-        <Route path='/cart' element={<CartPages />} />
-        <Route path='/login' element={<LoginPages />} />
-        <Route path='/register' element={<RegistrationPages />} />
+        <Route path='/article/:slug' element={<ArticleDetailScreen />} />
 
+        <Route path='/cart' element={<CartScreen />} />
+
+        <Route path='/login' element={<LoginScreen />} />
+        <Route path='/register' element={<RegistrationScreen />} />
       </Routes>
 
       <Footer />

@@ -1,24 +1,44 @@
-import React from 'react'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import { Link } from "react-router-dom";
-import { HiOutlineHeart } from "react-icons/hi2";
-import '../../styles/home/articles_card.scss'
+// import CardActions from '@mui/material/CardActions';
+// import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
-function Article({ article }) {
+export default function Article({ article }) {
+
+
     return (
         <>
-            <HiOutlineHeart className='icon' size={20} style={{ position: 'absolute', top: '58px', right: '5px', color: 'white' }} />
-            <Link to={`article/${article.slug}`}>
-                <div className="card">
-                    <img src={article.image} alt={article.name} className="card-image" />
-                    <div className="card-content">
-                        <h3 className="card-title">{article.name}</h3>
-                        <p className="card-price">{article.price} &euro;</p>
-                    </div>
-                </div>
-            </Link>
+        <Link to={`article/${article.slug}`}>
+            <Card sx={{ maxWidth: 345 }}>
+                <CardMedia
+                    component="img"
+                    height="194"
+                    image={article.image}
+                    alt={article.name}
+                    className="card-image"
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {article.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        {article.price} &euro;
+                    </Typography>
+                </CardContent>
+                {/* <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                    </IconButton>
+                </CardActions> */}
+            </Card>
+        </Link>
+
         </>
     );
 }
-
-export default Article

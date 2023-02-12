@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
-import CarouselHeader from '../components/home/Carousel_Home';
-import Article from '../components/home/Articles';
+import CarouselHeader from '../components/home/Carousel_Home'
+import Article from '../components/home/Articles'
 import Categories from '../components/home/Categories'
 
-import { useDispatch, useSelector } from 'react-redux';
-import { listArticles } from '../actions/articleAction';
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { useDispatch, useSelector } from 'react-redux'
+import { listArticles } from '../actions/articleAction'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 
 import '../styles/home/newsletter_bar.scss'
 import '../styles/home/promo_time.scss'
@@ -43,7 +45,9 @@ function HomePages() {
                         <div className="container_articles ">
                             <h2>Last Added</h2>
                             {loading ? (
-                                <h2>Loading ...</h2>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+                                    <CircularProgress />
+                                </Box>
                             ) : error ? (
                                 <h3>{error}</h3>
                             ) : (
@@ -64,7 +68,7 @@ function HomePages() {
                         </div>
                     </div>
 
-                    <Categories/>
+                    <Categories />
 
                     <div className="newsletter">
                         <div>
