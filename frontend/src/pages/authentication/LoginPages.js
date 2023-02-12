@@ -53,10 +53,10 @@ const LoginPages = ({ location }) => {
           />
         </div>
         <button type="submit" className="login-page__submit-button">
-          Login
+          Sing in        
         </button>
         <p className="login-page__text">
-          Do not have an account yet ? <Link to='/register' className='underline '>register here</Link> 
+          Do not have an account yet ? <Link to='/register' className='underline '>register here</Link>
         </p>
       </form>
     </div>

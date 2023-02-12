@@ -1,16 +1,13 @@
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { useDispatch } from 'react-redux'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { HiOutlineUser } from "react-icons/hi2"
 import { Link } from 'react-router-dom'
 import { logout } from '../actions/userActions'
+import '../styles/components/header.scss'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function Dropdown(props) {
+const Dropdown = ({ authUserInfo }) => {
   const dispatch = useDispatch()
 
   const logoutHandler = () => {
@@ -18,14 +15,14 @@ export default function Dropdown(props) {
   }
 
   return (
-    <Menu as="div" className="">
+    <Menu as="div">
       <div>
-        <Menu.Button className="flex items-center">
+        <Menu.Button className="btn_drop_menu">
           <HiOutlineUser className='icon' size={20} />
-          <span className="ml-2">
-            {props.authUserInfo.name} {props.authUserInfo.lastname}
+          <span className="info_user">
+            {authUserInfo.name}
           </span>
-          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+          <ChevronDownIcon className="chevron_icon" aria-hidden="true" />
         </Menu.Button>
 
       </div>
@@ -39,34 +36,26 @@ export default function Dropdown(props) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-
-          <div className="">
-            <Menu.Item>
-              {({ active }) => (
-                <Link to='/profile'
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}>Profile</Link>
-              )}
-            </Menu.Item>
-          </div>
-
-          <div className="py-1">
-            <Menu.Item>
-              <Link onClick={logoutHandler}
-                className={classNames(
-                  'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                )}>
-                Logout
+        <Menu.Items className='menu_items'>
+          <Menu.Item className='item'>
+            {({ active }) => (
+              <Link to='/profile'
+                className={`block px-4 py-2 text-sm ${active ? 'bg-gray text-gray' : 'text-gray'}`}>
+                Profile
               </Link>
-            </Menu.Item>
-          </div>
-
+            )}
+          </Menu.Item>
+            <hr />
+          <Menu.Item className='item'>
+            <Link onClick={logoutHandler}
+              className="block px-4 py-2 text-sm text-gray-700">
+              Logout
+            </Link>
+          </Menu.Item>
         </Menu.Items>
       </Transition>
     </Menu>
   )
 }
+
+export default Dropdown
