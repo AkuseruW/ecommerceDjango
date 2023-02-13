@@ -12,7 +12,7 @@ export default function RegistrationScreen({ location }) {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const redirect = location ? location.search ? location.search.split('=')[1] : '/' : '/'
+    const redirect = location.search ? location.search.split('=')[1] : '/'
     const userAlreadyConnected = useSelector(state => state.userRegister)
     const { userInfo } = userAlreadyConnected
 

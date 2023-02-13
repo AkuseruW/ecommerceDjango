@@ -7,6 +7,7 @@ import ArticleDetailScreen from './pages/articles/ArticleDetail';
 // import ArticlesListPages from './pages/ArticlesListPages';
 import CartScreen from './pages/cart/Cart';
 import LoginScreen from './pages/authentication/Login';
+import Shipping from './pages/cart/Shipping';
 import RegistrationScreen from './pages/authentication/Registration';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -39,6 +40,8 @@ function App() {
         <Route path='/article/:slug' element={<ArticleDetailScreen />} />
 
         <Route path='/cart' element={<CartScreen />} />
+        <Route path='/shipping' element={<Shipping />} />
+
 
         <Route path='/login' element={<LoginScreen />} />
         <Route path='/register' element={<RegistrationScreen />} />

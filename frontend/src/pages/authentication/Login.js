@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { login } from '../../actions/userActions';
 
 import '../../styles/authentication/login.scss';
 
-const LoginScreen = ({ location }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+const LoginScreen = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const location = useLocation();
+  console.log(location);
 
-  const redirect = location?.search ? location.search.split('=')[1] : '/';
-  const userLogin = useSelector(state => state.userLogin);
-  const { userInfo } = userLogin;
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
 
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (userInfo) {
-      navigate(redirect);
+      navigate(`/${redirect}`);
     }
-  }, [navigate, userInfo, redirect]);
+  }, [navigate, userInfo, redirect])
 
   const handleSubmit = e => {
-    e.preventDefault();
-    dispatch(login(email, password));
-  };
+    e.preventDefault()
+    dispatch(login(email, password))
+  }
 
   return (
     <div className="login-page">
@@ -53,14 +56,14 @@ const LoginScreen = ({ location }) => {
           />
         </div>
         <button type="submit" className="login-page__submit-button">
-          Sing in        
+          Sing in
         </button>
         <p className="login-page__text">
           Do not have an account yet ? <Link to='/register' className='underline '>register here</Link>
         </p>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default LoginScreen;
+export default LoginScreen

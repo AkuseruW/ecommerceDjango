@@ -19,10 +19,11 @@ import { HiOutlineXMark } from "react-icons/hi2";
 import { addToCart, removeFromCart } from '../../actions/cartActions';
 import '../../styles/cart/cart_page.scss'
 
-const TVA = 0.21;
+const TVA = 0.21
 
 export default function CartScreen() {
     const cartItems = useSelector(state => state.cart.cartItems);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -34,8 +35,8 @@ export default function CartScreen() {
     const total = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2);
 
     const checkoutHandler = () => {
-        navigate('/login?redirect=shipping');
-    };
+        navigate ('/login?redirect=shipping')
+    }
 
     return (
         <div className="container cart">
@@ -70,7 +71,7 @@ export default function CartScreen() {
                                                 )}
                                             </select>
                                         </TableCell>
-                                        <TableCell align="center">${parseFloat(item.price).toFixed(2)}</TableCell>
+                                        <TableCell align="center">{parseFloat(item.price).toFixed(2)} &euro;</TableCell>
                                         <TableCell align="right">
                                             <HiOutlineXMark
                                                 className="remove-icon"
@@ -93,7 +94,7 @@ export default function CartScreen() {
                         <ListItem>
                             <Typography variant="body2" color="text.secondary">TVA (21%): <span>{parseFloat(total * TVA).toFixed(2)} &euro;</span></Typography>
                         </ListItem>
-                        
+
                         <Divider />
 
                         <ListItem>
