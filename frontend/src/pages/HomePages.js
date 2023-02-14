@@ -62,11 +62,6 @@ function HomePages() {
                         </div>
                     </div>
 
-                    <div className="promo-time">
-                        <div>
-                            <h3>Big winter promotion </h3>
-                        </div>
-                    </div>
 
                     <Categories />
 

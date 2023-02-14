@@ -15,6 +15,9 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { loadCart } from './actions/cartActions';
 import { loadAuthUser } from './actions/userActions'
+import ProfileScreen from './pages/users/Profile';
+import UpdateProfileScreen from './pages/users/Update';
+import OrderHistoryScreen from './pages/users/OrderHistory';
 
 
 function App() {
@@ -42,9 +45,14 @@ function App() {
         <Route path='/cart' element={<CartScreen />} />
         <Route path='/shipping' element={<Shipping />} />
 
-
         <Route path='/login' element={<LoginScreen />} />
         <Route path='/register' element={<RegistrationScreen />} />
+        <Route path='/profile' element={<ProfileScreen />} />
+        <Route path='/profile/security' element={<UpdateProfileScreen />} />
+        <Route path='/profile/order-history' element={<OrderHistoryScreen />} />
+
+
+
       </Routes>
 
       <Footer />

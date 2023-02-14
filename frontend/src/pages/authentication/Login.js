@@ -10,7 +10,7 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const location = useLocation();
+  const location = useLocation()
   console.log(location);
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
@@ -20,7 +20,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-      navigate(`/${redirect}`);
+      navigate(`${redirect}`);
     }
   }, [navigate, userInfo, redirect])
 

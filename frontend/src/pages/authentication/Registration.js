@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { register as userRegister } from '../../actions/userActions'
 
 import '../../styles/authentication/register.scss'
 
-export default function RegistrationScreen({ location }) {
+export default function RegistrationScreen() {
     const { register, handleSubmit, formState: { errors }, getValues } = useForm();
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
+
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
     const userAlreadyConnected = useSelector(state => state.userRegister)
