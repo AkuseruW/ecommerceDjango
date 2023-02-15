@@ -13,6 +13,10 @@ import {
     USER_DETAILS_SUCCESS,
     USER_DETAILS_FAIL,
 
+    USER_UPDATE_REQUEST,
+    USER_UPDATE_SUCCESS,
+    USER_UPDATE_FAIL,
+
     USER_LOGOUT,
 
 } from "../constants/userConstants";
@@ -108,12 +112,12 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             type: USER_DETAILS_REQUEST
         })
 
-        const {userLogin : {userInfo}} =  getState()
+        const { userLogin: { userInfo } } = getState()
 
         const config = {
             headers: {
                 'Content-type': 'application/json',
-                Authorization : `Bearer ${userInfo.token}`
+                Authorization: `Bearer ${userInfo.token}`
             }
         }
 
@@ -137,3 +141,47 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         })
     }
 }
+
+export const update = (name, lastname, email, password) => async (dispatch, getState) => {
+    try {
+        // Dispatch USER_UPDATE_REQUEST action to inform the state that an update request is in progress
+        dispatch({
+            type: USER_UPDATE_REQUEST
+        });
+
+        // Get the user's token from the state
+        const { userLogin: { userInfo } } = getState();
+
+        // Set the headers for the API request, including the user's token
+        const config = {
+            headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        };
+
+        // Make the API request to update the user's profile with the new information
+        const { data } = await axios.put(
+            '/api/users/profile/update/',
+            { 'first_name': name, 'last_name': lastname, 'email': email, 'password': password },
+            config
+        );
+
+        // Dispatch USER_UPDATE_SUCCESS action with the updated user data
+        dispatch({
+            type: USER_UPDATE_SUCCESS,
+            payload: data
+        });
+
+        // Store the updated user data in localStorage
+        localStorage.setItem('userInfo', JSON.stringify(data));
+    } catch (error) {
+        // If there is an error, dispatch USER_UPDATE_FAIL action with the error message
+        dispatch({
+            type: USER_UPDATE_FAIL,
+            payload: error.response && error.response.data.detail
+                ? error.response.data.detail
+                : error.message,
+        });
+    }
+};
