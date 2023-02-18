@@ -78,6 +78,7 @@ export const userDetailsReducers = (state = {user: {} }, action) => {
 }
 
 export const userUpdateProfileReducers = (state = { }, action) => {
+    console.log(action)
     switch (action.type) {
         case USER_UPDATE_REQUEST:
             return { loading: true }

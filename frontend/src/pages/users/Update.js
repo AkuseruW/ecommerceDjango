@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
-import { update } from '../../actions/userActions'
+import { updateUserProfile } from '../../actions/userActions'
+
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
@@ -23,8 +24,7 @@ function UpdateProfileScreen() {
     }, [navigate, userInfo])
 
     const onSubmit = (e) => {
-        console.log('update')
-        dispatch(update(e.name, e.lastname, e.email, e.password));
+        dispatch(updateUserProfile(e.name, e.lastname, e.email, e.password))
     }
 
     return (
