@@ -39,7 +39,7 @@ function UpdateProfileScreen() {
                         defaultValue={userInfo ? userInfo.name : ""}
                         aria-invalid={errors.name ? "true" : "false"}
                     />
-                    {errors.firstName?.type === 'required' && <p role="alert">First name is required</p>}
+                    {errors.name?.type === 'required' && <p role="alert">First name is required</p>}
 
                     <label htmlFor="lastname">Last Name</label>
                     <input
@@ -48,7 +48,7 @@ function UpdateProfileScreen() {
                         defaultValue={userInfo ? userInfo.lastname : ""}
                         aria-invalid={errors.lastname ? "true" : "false"}
                     />
-                    {errors.firstName?.type === 'required' && <p role="alert">Last name is required</p>}
+                    {errors.lastname?.type === 'required' && <p role="alert">Last name is required</p>}
 
                     <label htmlFor="email">Email</label>
                     <input

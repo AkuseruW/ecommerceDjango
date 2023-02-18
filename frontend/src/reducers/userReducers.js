@@ -2,7 +2,6 @@ import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
     USER_LOGIN_FAIL,
-    LOAD_USER_IF_EXIST,
 
     USER_REGISTER_REQUEST,
     USER_REGISTER_SUCCESS,
@@ -21,9 +20,6 @@ import {
 
 export const userLoginReducers = (state = { }, action) => {
     switch (action.type) {
-        case LOAD_USER_IF_EXIST:
-            return { userInfo: action.payload }
-
         case USER_LOGIN_REQUEST:
             return { loading: true }
 

@@ -28,9 +28,8 @@ export default function CartScreen() {
     const dispatch = useDispatch();
 
     const removeFromCartHandler = (slug) => {
-        console.log(slug);
-        dispatch(removeFromCart(slug));
-    };
+        dispatch(removeFromCart(slug))
+    }
 
     const total = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2);
 

@@ -11,27 +11,13 @@ import Shipping from './pages/cart/Shipping';
 import RegistrationScreen from './pages/authentication/Registration';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
-import { loadCart } from './actions/cartActions';
-import { loadAuthUser } from './actions/userActions'
+import React from 'react'
 import ProfileScreen from './pages/users/Profile';
 import UpdateProfileScreen from './pages/users/Update';
 import OrderHistoryScreen from './pages/users/OrderHistory';
 
 
 function App() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    const cartItems = localStorage.getItem('cartItems')
-    if (cartItems) {
-      dispatch(loadCart(JSON.parse(cartItems)))
-    }
-
-    const authUserInfo = localStorage.getItem('userInfo')
-    dispatch(loadAuthUser(JSON.parse(authUserInfo) || null))
-  }, [dispatch])
 
   return (
     <Router>

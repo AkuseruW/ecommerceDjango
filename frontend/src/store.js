@@ -23,7 +23,8 @@ const store = configureStore({
         userLogin: userLoginReducers,
         userRegister:userRegisterReducers,
         userDetails : userDetailsReducers,
-    },initialState
+    },
+    preloadedState: initialState
 })
 
 export default store

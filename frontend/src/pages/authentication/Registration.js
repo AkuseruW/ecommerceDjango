@@ -25,7 +25,6 @@ export default function RegistrationScreen() {
     }, [navigate, userInfo, redirect])
 
     const onSubmit = (e) => {
-        console.log(e.name, e.lastname, e.email, e.password)
         dispatch(userRegister(e.name, e.lastname, e.email, e.password));
     }
 
