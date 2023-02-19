@@ -10,10 +10,17 @@ const cartItemsStorage = localStorage.getItem('cartItems') ?
 const userInfoStorage = localStorage.getItem('userInfo') ?
     JSON.parse(localStorage.getItem('userInfo')) : null
 
+const shippingAdressStorage = localStorage.getItem('shippingAddress') ?
+    JSON.parse(localStorage.getItem('shippingAddress')) : {}
+
 const initialState = {
-    cart: { cartItems:cartItemsStorage },
-    userLogin : {userInfo:userInfoStorage}
+    cart: {
+        cartItems: cartItemsStorage,
+        shippingAddress: shippingAdressStorage,
+    },
+    userLogin: { userInfo: userInfoStorage }
 }
+
 
 const store = configureStore({
     reducer: {
@@ -21,8 +28,8 @@ const store = configureStore({
         articleDetails: articleDetailReducers,
         cart: cartReducer,
         userLogin: userLoginReducers,
-        userRegister:userRegisterReducers,
-        userDetails : userDetailsReducers,
+        userRegister: userRegisterReducers,
+        userDetails: userDetailsReducers,
     },
     preloadedState: initialState
 })

@@ -7,7 +7,7 @@ import ArticleDetailScreen from './pages/articles/ArticleDetail';
 // import ArticlesListPages from './pages/ArticlesListPages';
 import CartScreen from './pages/cart/Cart';
 import LoginScreen from './pages/authentication/Login';
-import Shipping from './pages/cart/Shipping';
+import Shipping from './pages/checkout/Shipping';
 import RegistrationScreen from './pages/authentication/Registration';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom'
@@ -15,6 +15,7 @@ import React from 'react'
 import ProfileScreen from './pages/users/Profile';
 import UpdateProfileScreen from './pages/users/Update';
 import OrderHistoryScreen from './pages/users/OrderHistory';
+import Payment from './pages/checkout/Payment';
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
 
         <Route path='/cart' element={<CartScreen />} />
         <Route path='/shipping' element={<Shipping />} />
+        <Route path='/payment' element={<Payment />} />
+
 
         <Route path='/login' element={<LoginScreen />} />
         <Route path='/register' element={<RegistrationScreen />} />

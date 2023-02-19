@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import { updateUserProfile } from '../../actions/userActions'
 
+import '../../styles/users/updateForm.scss'
+
+
 
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
@@ -20,7 +23,7 @@ function UpdateProfileScreen() {
     useEffect(() => {
         if (!userInfo) {
             navigate('/login')
-        } 
+        }
     }, [navigate, userInfo])
 
     const onSubmit = (e) => {
@@ -28,7 +31,7 @@ function UpdateProfileScreen() {
     }
 
     return (
-        <div className="update_profile-page">
+        <div className="container update_profile-page">
             <form className='update-form' onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="form-group">
@@ -85,6 +88,7 @@ function UpdateProfileScreen() {
                 {error && <div className="form-error">{error}</div>}
             </form>
         </div>
+
     )
 }
 
