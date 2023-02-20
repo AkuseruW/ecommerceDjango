@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux'
 import { saveShippingAddress } from '../../actions/cartActions'
 import { useNavigate } from 'react-router-dom';
 import CheckoutSteps from '../../components/Stepper';
+import '../../styles/checkout/shipping.scss'
 
-function Shipping(props) {
+function Shipping() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -18,7 +19,11 @@ function Shipping(props) {
 
   return (
     <div className="container">
-      <CheckoutSteps isValidStep1={true} isValidStep2={true}/>
+      <CheckoutSteps
+        isValidStep1={true}
+        isValidStep2={true}
+        activeStep={1}
+      />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <label htmlFor="address">Address</label>
@@ -40,13 +45,15 @@ function Shipping(props) {
           {errors.city && <span>This field is required</span>}
         </div>
 
-        <div>
+        <div className="form-group">
           <label htmlFor="country">Country</label>
-          <input
-            type="text"
-            id="country"
-            {...register("country", { required: true })}
-          />
+          <select id="country" {...register("country", { required: true })}>
+            <option value="">Select Country</option>
+            <option value="Belgium">Belgium</option>
+            <option value="France">France</option>
+            <option value="Swiss">Swiss</option>
+            <option value="Luxemburg">Luxemburg</option>
+          </select>
           {errors.country && <span>This field is required</span>}
         </div>
 
